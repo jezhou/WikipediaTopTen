@@ -27,6 +27,12 @@ case "$1" in
         echo Done.
         ;;
     partC)
+        xterm -hold -e java -cp $WIKI_IGNITE $PACKAGE.DataNode &
+        sleep 5
+        xterm -hold -e java -cp $WIKI_IGNITE -Xms512m -Xmx512m $PACKAGE.partc.QueryNode &
+        xterm -e java -cp $WIKI_IGNITE -Xms512m -Xmx512m $PACKAGE.partc.StreamNode $2 &
+        xterm -e java -cp $WIKI_IGNITE -Xms512m -Xmx512m $PACKAGE.partc.StreamNode $3 &
+        xterm -e java -cp $WIKI_IGNITE -Xms512m -Xmx512m $PACKAGE.partc.StreamNode $4 &
         ;;
     *)
         echo $"Usage: $0 {compile|partA <file1>|partB <file1> <file2> <file3>|partC <file1> <file2> <file3>}"
