@@ -1,7 +1,10 @@
-package wordcount;
+package wikipedia.top.ten.parta;
 
-import org.apache.ignite.*;
-import org.apache.ignite.stream.*;
+import org.apache.ignite.Ignite;
+import org.apache.ignite.IgniteCache;
+import org.apache.ignite.IgniteDataStreamer;
+import org.apache.ignite.Ignition;
+import org.apache.ignite.stream.StreamTransformer;
 
 import javax.cache.processor.EntryProcessorException;
 import javax.cache.processor.MutableEntry;
@@ -13,19 +16,23 @@ import java.util.stream.Stream;
 /**
  * Created by s1675039 on 15/11/16.
  */
-public class StreamWords {
+public class StreamPartA {
 
     public static class StreamingExampleCacheEntryProcessor extends StreamTransformer<String, Long> {
         @Override
         public Object process(MutableEntry<String, Long> e, Object... arg) throws EntryProcessorException {
-            System.out.println(e.getValue());
-            Long val = e.getValue();
-            e.setValue(val == null ? 1L : val + 1);
+            // If the current value of entry exists, add to it. Else, just set it
+            e.setValue((Long)arg[0]);
             return null;
         }
     }
 
     public static void main(String[] args) throws Exception {
+
+        if(args.length != 1) {
+            System.err.println("Incorrect # of arguments");
+            System.exit(1);
+        }
         // Mark this cluster member as client.
         Ignition.setClientMode(true);
 
@@ -41,23 +48,19 @@ public class StreamWords {
                 stmr.receiver(new StreamingExampleCacheEntryProcessor());
 
                 // StreamPartA words from "alice-in-wonderland" book.
-                while (true) {
-                    Path path = Paths.get("/afs/inf.ed.ac.uk/user/s16/s1675039/apache-ignite-fabric-1.7.0-bin/examples/src/main/java/org/apache/ignite/examples/streaming/wordcount/alice-in-wonderland.txt");
-                    System.out.println(path);
+                Path path = Paths.get(args[0]);
+                System.out.println("Reading from " + path);
 
-                    // Read words from a text file.
-                    try (Stream<String> lines = Files.lines(path)) {
-                        lines.forEach(line -> {
-                            Stream<String> words = Stream.of(line.split(" "));
-
-                            // StreamPartA words into Ignite streamer.
-                            words.forEach(word -> {
-                                if (!word.trim().isEmpty())
-                                    stmr.addData(word, 1L);
-                            });
-                        });
-                    }
+                // Read words from a text file.
+                try (java.util.stream.Stream<String> lines = Files.lines(path)) {
+                    lines.forEach(line -> {
+                        String[] words = java.util.stream.Stream
+                                .of(line.split(" "))
+                                .toArray(size -> new String[size]);
+                        stmr.addData(words[1], new Long(Long.parseLong(words[2].trim())));
+                    });
                 }
+
             }
         }
     }
