@@ -46,12 +46,15 @@ public class QueryNode {
                     top10.forEach(item -> {
                         String output = currentTime + ":" + item.get(0) + ":" + item.get(1);
                         System.out.println(output);
-                        writer.println(output);
                     });
-                    current10 = strCache.query(top10Qry).getAll();
                     top10 = topCache.query(top10Qry).getAll();
+                    current10 = strCache.query(top10Qry).getAll();
                 }
-                System.out.println("Done querying!");
+                System.out.println("Done querying! Writing to local file.");
+                top10.forEach(item -> {
+                    String output = System.currentTimeMillis() + ":" + item.get(0) + ":" + item.get(1);
+                    writer.println(output);
+                });
                 writer.close();
             }
         }

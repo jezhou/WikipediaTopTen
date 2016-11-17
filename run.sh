@@ -6,7 +6,6 @@ PACKAGE=wikipedia.top.ten
 case "$1" in
     compile)
         # Compile using Maven and Java 1.8.0
-        mvn clean
         JAVA_HOME=/usr/lib/jvm/java-1.8.0 mvn package
         echo Built into "target" folder!
         ;;
