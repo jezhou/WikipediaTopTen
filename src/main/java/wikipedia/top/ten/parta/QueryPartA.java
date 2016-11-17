@@ -15,7 +15,7 @@ public class QueryPartA {
         // Mark this cluster member as client.
         Ignition.setClientMode(true);
 
-        try (Ignite ignite = Ignition.start("examples/config/example-ignite-no-discovery.xml")) {
+        try (Ignite ignite = Ignition.start(QueryPartA.class.getResource("/example-ignite-no-discovery.xml"))) {
             IgniteCache<String, Long> stmCache = ignite.getOrCreateCache(CacheConfig.wordCache());
 
             // Select top 10 words.
@@ -27,14 +27,19 @@ public class QueryPartA {
 
             // Since we're starting the QueryPartA node first, wait
             // until the stream nodes start
-            while(true) {
+            System.out.println("Waiting for cache to fill...");
+            while(top10.isEmpty()){
+                top10 = stmCache.query(top10Qry).getAll();
+            }
+            while(!top10.isEmpty()) {
                 long currentTime = System.currentTimeMillis();
                 top10.forEach(item -> {
                     System.out.println(currentTime + ":" + item.get(0) + ":" + item.get(1));
                 });
-                top10 = stmCache.query(top10Qry).getAll();
                 Thread.sleep(10000);
+                top10 = stmCache.query(top10Qry).getAll();
             }
+            System.out.println("Done querying!");
         }
     }
 }

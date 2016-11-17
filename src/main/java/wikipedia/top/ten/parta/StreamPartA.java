@@ -11,7 +11,6 @@ import javax.cache.processor.MutableEntry;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.stream.Stream;
 
 /**
  * Created by s1675039 on 15/11/16.
@@ -36,7 +35,7 @@ public class StreamPartA {
         // Mark this cluster member as client.
         Ignition.setClientMode(true);
 
-        try (Ignite ignite = Ignition.start("examples/config/example-ignite-no-discovery.xml")) {
+        try (Ignite ignite = Ignition.start(StreamPartA.class.getResource("/example-ignite-no-discovery.xml"))) {
             IgniteCache<String, Long> stmCache = ignite.getOrCreateCache(CacheConfig.wordCache());
 
             // Create a streamer to stream words into the cache.
