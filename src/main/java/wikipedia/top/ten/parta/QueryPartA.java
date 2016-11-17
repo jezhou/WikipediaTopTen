@@ -6,6 +6,7 @@ import org.apache.ignite.Ignition;
 import org.apache.ignite.cache.query.SqlFieldsQuery;
 
 import java.util.List;
+import java.io.PrintWriter;
 
 /**
  * Created by s1675039 on 15/11/16.
@@ -28,18 +29,23 @@ public class QueryPartA {
             // Since we're starting the QueryPartA node first, wait
             // until the stream nodes start
             System.out.println("Waiting for cache to fill...");
-            while(top10.isEmpty()){
-                top10 = stmCache.query(top10Qry).getAll();
+            try (PrintWriter writer = new PrintWriter("log-partA.txt")) {
+                while (top10.isEmpty()) {
+                    top10 = stmCache.query(top10Qry).getAll();
+                }
+                while (!top10.isEmpty()) {
+                    long currentTime = System.currentTimeMillis();
+                    top10.forEach(item -> {
+                        String output = currentTime + ":" + item.get(0) + ":" + item.get(1);
+                        System.out.println(output);
+                        writer.println(output);
+                    });
+                    Thread.sleep(10000);
+                    top10 = stmCache.query(top10Qry).getAll();
+                }
+                System.out.println("Done querying!");
+                writer.close();
             }
-            while(!top10.isEmpty()) {
-                long currentTime = System.currentTimeMillis();
-                top10.forEach(item -> {
-                    System.out.println(currentTime + ":" + item.get(0) + ":" + item.get(1));
-                });
-                Thread.sleep(10000);
-                top10 = stmCache.query(top10Qry).getAll();
-            }
-            System.out.println("Done querying!");
         }
     }
 }
