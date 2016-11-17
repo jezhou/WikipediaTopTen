@@ -35,8 +35,8 @@ public class CacheConfig {
         cfg.setIndexedTypes(String.class, Long.class);
 
         // Evict if too old
-        cfg.setEvictionPolicy(new SortedEvictionPolicy<String, Long>((o1, o2) ->
-                o1.getValue().compareTo(o2.getValue())));
+        cfg.setEvictionPolicy(new SortedEvictionPolicy<String, Long>(100000, new ViewComparator()));
+
         return cfg;
     }
 }

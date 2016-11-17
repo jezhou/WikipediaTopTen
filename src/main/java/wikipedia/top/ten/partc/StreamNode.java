@@ -42,6 +42,8 @@ public class StreamNode {
                     String article = e.getKey();
                     Long views = e.getValue();
 
+                    stmCache.put(article, views);
+
                     if (topCache.containsKey(article)) {
                         views += topCache.get(article);
                     }
@@ -63,7 +65,7 @@ public class StreamNode {
                     });
                 }
                 System.out.println("Finished streaming, clearing the top cache");
-                topCache.removeAll();
+                stmCache.removeAll();
 
             }
         }
