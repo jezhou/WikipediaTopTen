@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67635658-a695-4335-8f60-eac60d04a4be" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/DataNode.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run.sh" afterPath="$PROJECT_DIR$/run.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/QueryNode.java" afterPath="$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/QueryNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/ViewComparator.java" afterPath="$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/ViewComparator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/StreamNode.java" afterPath="$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/StreamNode.java" />
     </list>
     <ignored path="WikipediaTopTen.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,21 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="StreamNode.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="StreamNode.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/StreamNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/DataNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="558">
+              <caret line="46" column="51" selection-start-line="46" selection-start-column="51" selection-end-line="46" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -51,8 +40,8 @@
       <file leaf-file-name="CacheConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/CacheConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state relative-caret-position="342">
+              <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QueryNode.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QueryNode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/QueryNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="41">
-              <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+            <state relative-caret-position="486">
+              <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,9 +120,9 @@
         <option value="$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/DataNode.java" />
         <option value="$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/CacheConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partb/QueryNode.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/StreamNode.java" />
         <option value="$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/ViewComparator.java" />
         <option value="$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/QueryNode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/StreamNode.java" />
       </list>
     </option>
   </component>
@@ -850,7 +839,14 @@
       <option name="project" value="LOCAL" />
       <updated>1479380857431</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Finished Part C">
+      <created>1479381784247</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1479381784247</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -901,7 +897,8 @@
     <MESSAGE value="Part B finished using samples (the count is approximately 3x using the same file 3 times in a row)" />
     <MESSAGE value="Part C in progress" />
     <MESSAGE value="Part C finished ish" />
-    <option name="LAST_COMMIT_MESSAGE" value="Part C finished ish" />
+    <MESSAGE value="Finished Part C" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished Part C" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1237,24 +1234,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/StreamNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/CacheConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/ViewComparator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -1267,11 +1246,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/QueryNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+        <state relative-caret-position="486">
+          <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/CacheConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wikipedia/top/ten/partc/StreamNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="46" column="51" selection-start-line="46" selection-start-column="51" selection-end-line="46" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>

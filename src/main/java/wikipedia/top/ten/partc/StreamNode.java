@@ -34,18 +34,17 @@ public class StreamNode {
 
             // Create a streamer to stream words into the cache.
             try (IgniteDataStreamer<String, Long> stmr = ignite.dataStreamer(stmCache.getName())) {
-                // Allow data updates.
-                stmr.allowOverwrite(true);
 
                 // Configure data transformation to count instances of the same word.
                 stmr.receiver(StreamVisitor.from((cache, e) -> {
                     String article = e.getKey();
                     Long views = e.getValue();
 
+                    // Need to add this manually since visitor won't populate cache
                     stmCache.put(article, views);
 
-                    if (topCache.containsKey(article)) {
-                        views += topCache.get(article);
+                    if (topCache.containsKey(article) && topCache.get(article) != null) {
+                        views = views + topCache.get(article);
                     }
 
                     topCache.put(article, views);
@@ -60,8 +59,10 @@ public class StreamNode {
                     lines.forEach(line -> {
                         String[] words = java.util.stream.Stream
                                 .of(line.split(" "))
-                                .toArray(size -> new String[size]);
-                        stmr.addData(words[1], new Long(Long.parseLong(words[2].trim())));
+                                .toArray(String[]::new);
+                        if(words[0].contains(".b")) {
+                            stmr.addData(words[1], Long.parseLong(words[2].trim()));
+                        }
                     });
                 }
                 System.out.println("Finished streaming, clearing the top cache");
