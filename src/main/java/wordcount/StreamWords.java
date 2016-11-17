@@ -40,7 +40,7 @@ public class StreamWords {
                 // Configure data transformation to count instances of the same word.
                 stmr.receiver(new StreamingExampleCacheEntryProcessor());
 
-                // StreamPartA words from "alice-in-wonderland" book.
+                // StreamNode words from "alice-in-wonderland" book.
                 while (true) {
                     Path path = Paths.get("/afs/inf.ed.ac.uk/user/s16/s1675039/apache-ignite-fabric-1.7.0-bin/examples/src/main/java/org/apache/ignite/examples/streaming/wordcount/alice-in-wonderland.txt");
                     System.out.println(path);
@@ -50,7 +50,7 @@ public class StreamWords {
                         lines.forEach(line -> {
                             Stream<String> words = Stream.of(line.split(" "));
 
-                            // StreamPartA words into Ignite streamer.
+                            // StreamNode words into Ignite streamer.
                             words.forEach(word -> {
                                 if (!word.trim().isEmpty())
                                     stmr.addData(word, 1L);

@@ -15,7 +15,7 @@ import java.nio.file.Paths;
 /**
  * Created by s1675039 on 15/11/16.
  */
-public class StreamPartA {
+public class StreamNode {
 
     public static class StreamingExampleCacheEntryProcessor extends StreamTransformer<String, Long> {
         @Override
@@ -35,7 +35,7 @@ public class StreamPartA {
         // Mark this cluster member as client.
         Ignition.setClientMode(true);
 
-        try (Ignite ignite = Ignition.start(StreamPartA.class.getResource("/example-ignite-no-discovery.xml"))) {
+        try (Ignite ignite = Ignition.start(StreamNode.class.getResource("/example-ignite-no-discovery.xml"))) {
             IgniteCache<String, Long> stmCache = ignite.getOrCreateCache(CacheConfig.wordCache());
 
             // Create a streamer to stream words into the cache.
@@ -46,7 +46,7 @@ public class StreamPartA {
                 // Configure data transformation to count instances of the same word.
                 stmr.receiver(new StreamingExampleCacheEntryProcessor());
 
-                // StreamPartA words from "alice-in-wonderland" book.
+                // StreamNode words from "alice-in-wonderland" book.
                 Path path = Paths.get(args[0]);
                 System.out.println("Reading from " + path);
 

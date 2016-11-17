@@ -13,11 +13,18 @@ case "$1" in
     partA)
         xterm -hold -e java -cp $WIKI_IGNITE $PACKAGE.DataNode &
         sleep 5
-        xterm -hold -e java -cp $WIKI_IGNITE -Xms512m -Xmx512m $PACKAGE.parta.QueryPartA &
-        xterm -hold -e java -cp $WIKI_IGNITE -Xms512m -Xmx512m $PACKAGE.parta.StreamPartA $2 &
+        xterm -hold -e java -cp $WIKI_IGNITE -Xms512m -Xmx512m $PACKAGE.parta.QueryNode &
+        xterm -e java -cp $WIKI_IGNITE -Xms512m -Xmx512m $PACKAGE.parta.StreamNode $2 &
         echo Done.
         ;;
     partB)
+        xterm -hold -e java -cp $WIKI_IGNITE $PACKAGE.DataNode &
+        sleep 5
+        xterm -hold -e java -cp $WIKI_IGNITE -Xms512m -Xmx512m $PACKAGE.partb.QueryNode &
+        xterm -e java -cp $WIKI_IGNITE -Xms512m -Xmx512m $PACKAGE.partb.StreamNode $2 &
+        xterm -e java -cp $WIKI_IGNITE -Xms512m -Xmx512m $PACKAGE.partb.StreamNode $3 &
+        xterm -e java -cp $WIKI_IGNITE -Xms512m -Xmx512m $PACKAGE.partb.StreamNode $4 &
+        echo Done.
         ;;
     partC)
         ;;

@@ -11,22 +11,22 @@ import java.io.PrintWriter;
 /**
  * Created by s1675039 on 15/11/16.
  */
-public class QueryPartA {
+public class QueryNode {
     public static void main(String[] args) throws Exception {
         // Mark this cluster member as client.
         Ignition.setClientMode(true);
 
-        try (Ignite ignite = Ignition.start(QueryPartA.class.getResource("/example-ignite-no-discovery.xml"))) {
+        try (Ignite ignite = Ignition.start(QueryNode.class.getResource("/example-ignite-no-discovery.xml"))) {
             IgniteCache<String, Long> stmCache = ignite.getOrCreateCache(CacheConfig.wordCache());
 
             // Select top 10 words.
             SqlFieldsQuery top10Qry = new SqlFieldsQuery(
                     "select _key, _val from Long order by _val desc limit 10");
 
-            // QueryPartA top 10 popular words every 5 seconds.
+            // QueryNode top 10 popular words every 5 seconds.
             List<List<?>> top10 = stmCache.query(top10Qry).getAll();
 
-            // Since we're starting the QueryPartA node first, wait
+            // Since we're starting the QueryNode node first, wait
             // until the stream nodes start
             System.out.println("Waiting for cache to fill...");
             try (PrintWriter writer = new PrintWriter("log-partA.txt")) {
