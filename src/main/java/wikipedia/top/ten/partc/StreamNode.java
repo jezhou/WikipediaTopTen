@@ -43,11 +43,16 @@ public class StreamNode {
                     // Need to add this manually since visitor won't populate cache
                     stmCache.put(article, views);
 
-                    if (topCache.containsKey(article) && topCache.get(article) != null) {
-                        views = views + topCache.get(article);
+                    if(views != null) {
+
+                        if (topCache.containsKey(article) && topCache.get(article) != null) {
+                            views = views + topCache.get(article);
+                        }
+
+                        topCache.put(article, views);
+
                     }
 
-                    topCache.put(article, views);
                 }));
 
                 // StreamNode words from "alice-in-wonderland" book.
